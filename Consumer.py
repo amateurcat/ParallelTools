@@ -27,7 +27,9 @@ class Consumer():
             else:
                 index, t = args
                 ret = self.worker(t, **self.fixed_args)
-                self.collector((index,ret))
+                #04022023 modified to NOT return index by Consumer() anymore, 
+                #instead you should have a "head information" in ret for notation purposes
+                self.collector(ret)   
                 self.queue.task_done()
 
     def start(self):
