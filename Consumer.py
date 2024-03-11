@@ -29,7 +29,10 @@ class Consumer():
                 ret = self.worker(t, **self.fixed_args)
                 #04022023 modified to NOT return index by Consumer() anymore, 
                 #instead you should have a "head information" in ret for notation purposes
-                self.collector(ret)   
+                # 03102024 modified to assume the way to use collector is always .append()
+                # this is for the convenience of using multiprocessing.Manager().list()
+                # if you make self-defined collector, you should follow this convention
+                self.collector.append(ret)   
                 self.queue.task_done()
 
     def start(self):
