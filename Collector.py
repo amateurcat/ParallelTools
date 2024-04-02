@@ -13,7 +13,7 @@ class RedisWrapper():
     def __iter__(self, prefix=None, sort=False):
         # assuming the keys are in the form of ${prefix}:index
         # this will return all keys with the given prefix in the current db, and their values
-        # if you are using an existing Wrapper in the interactive model, 
+        # if you are using an existing Wrapper in the interactive model,
         # make sure it only contains the keys you want to retrieve
         if prefix is None:
             prefix = self.prefix
